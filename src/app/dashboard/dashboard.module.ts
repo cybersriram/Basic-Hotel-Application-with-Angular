@@ -4,10 +4,10 @@ import { DashboardComponent } from "./dashboard.component";
 import { NgxPaginationModule } from "ngx-pagination";
 import { ButtonModule, ModalModule, TableModule } from "carbon-components-angular";
 import { HttpClientModule } from "@angular/common/http";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommunicationComponent } from "../communicaton.component";
-// import { ButtonModule } from 'carbon-components-angular/button';
-// import { ContentSwitcherModule } from "carbon-components-angular";
+import { RouterModule } from "@angular/router";
+import { Dashboardroute } from "../routing/dashboard.routing";
 
 @NgModule({
     imports: [
@@ -17,7 +17,9 @@ import { CommunicationComponent } from "../communicaton.component";
         HttpClientModule,
         ButtonModule,
         FormsModule,
-        ModalModule
+        ModalModule,
+        ReactiveFormsModule,
+        RouterModule.forChild(Dashboardroute)
     ],
     bootstrap: [DashboardComponent],
     exports: [DashboardComponent],

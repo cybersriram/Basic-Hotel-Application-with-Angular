@@ -4,7 +4,6 @@ import { PaginationInstance } from "ngx-pagination";
 import { ExampleService } from "../app.component";
 
 @Component({
-  selector: "app-dashboard",
   templateUrl: "./dashboard.component.html",
   styleUrls: ["./dashboard.component.scss"],
 })

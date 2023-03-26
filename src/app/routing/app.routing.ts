@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ForminputComponent } from './forminput/forminput.component';
-import { BreakFastComponent } from './break-fast/break-fast.component';
-import { LunchComponent } from './lunch/lunch.component';
-import { DinnerComponent } from './dinner/dinner.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { BreakFastComponent } from '../break-fast/break-fast.component';
+import { DinnerComponent } from '../dinner/dinner.component';
+import { ForminputComponent } from '../forminput/forminput.component';
+import { LunchComponent } from '../lunch/lunch.component';
+
 const routes: Routes = [
   {
     path: 'form', component: ForminputComponent,
@@ -20,13 +20,10 @@ const routes: Routes = [
       }
     ],
   },
-  {
-    path: 'dashboard', component: DashboardComponent, 
-  }
+  {path:"dashboard",loadChildren: () => import('../dashboard/dashboard.module').then(x => x.DashBoardModule)},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-// export const ArrayOfComponents = [ForminputComponent]
