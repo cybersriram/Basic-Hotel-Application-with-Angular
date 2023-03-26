@@ -1,0 +1,75 @@
+<app-navigator></app-navigator>
+<div class="container">
+    <div>
+        <h1 style="text-align: center;">Dinner</h1>
+    </div> <br>
+    <div ibmGrid>
+        <div ibmRow>
+            <div ibmCol><br>
+                <fieldset class="bx--fieldset">
+                    <legend class="bx--label">Select all toppings used in Pizza</legend>
+                    <ibm-checkbox name="Tomato" [checked]="dinnerOBJ.Tomato" [hideLabel]="checkbox2Checked"
+                        (change)="onChange($event)">
+                        Tomato
+                    </ibm-checkbox>
+                    <ibm-checkbox name="Onion" [checked]="dinnerOBJ.Onion" (change)="onChange($event)"
+                        [hideLabel]="checkbox2Checked">
+                        Onion
+                    </ibm-checkbox>
+                    <ibm-checkbox name="Paneer" [checked]="dinnerOBJ.Paneer" (change)="onChange($event)" [hideLabel]="checkbox2Checked">
+                        Paneer
+                    </ibm-checkbox>
+                </fieldset>
+            </div>
+            <div ibmCol [columnNumbers]="{'md': 0, 'lg': 1}" class="vl"></div>
+            <div ibmCol>
+                <legend class="bx--label">Enter the following details</legend>
+                <table ibmTable model="model">
+                    <thead>
+                        <tr>
+                            <th>Slno</th>
+                            <th>Opted</th>
+                            <th>Weight</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of model.data | paginate: config">
+                            <td>{{item.id}}</td>
+                            <td>{{item.selectedVal}}</td>
+                            <td><ibm-number name="number-input-2" [value]="value(item.selectedVal)" id="{{item.selectedVal}}"
+                                    (change)="numberInput2ValueChange($event)" [theme]="'dark'" [size]='"sm"'>
+                                </ibm-number></td>
+                        </tr>
+                    </tbody>
+                </table><br>
+
+                <pagination-controls id="my-pagination"
+                    (pageChange)="config.currentPage = $event"></pagination-controls>
+            </div>
+        </div><br>
+        <ibm-modal [open]="open" [trigger]="trigger" (overlaySelected)="open = false">
+            <ibm-modal-header (closeSelect)="open = false" [showCloseButton]="false">
+                <p class="bx--modal-header__heading bx--type-beta">Error Module</p>
+            </ibm-modal-header>
+            <div class="bx--modal-content">
+                <p>The weight of the topping can't be Zero or less. Please check it</p>
+            </div>
+            <ibm-modal-footer>
+                <ng-container>
+                    <button
+                        ibmButton="primary"
+                        (click)="open = false"
+                        [attr.modal-primary-focus]="true">
+                        Okay
+                    </button>
+                </ng-container>
+            </ibm-modal-footer>
+        </ibm-modal>
+        <div ibmRow>
+            <div class="subBtn" >
+                <button #trigger assistiveTextAlignment="center" ibmButton="primary" type="submit"
+                    (click)="button2Clicked()">Confirm your Order</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,118 @@
+<h2 style="text-align: center;font-weight: 700;">DashBoard</h2>
+<div class="container">
+    <h4>BreakFast Orders</h4>
+    <table ibmTable model="model" style="justify-content: center;">
+        <thead>
+            <tr>
+                <th>Slno</th>
+                <th>Name</th>
+                <th>Cuisine Type</th>
+                <th>Item Selected</th>
+                <th>Quantity</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of model.breakfastdata | paginate: config">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.cuisine}}</td>
+                <td>{{item.selectedItem}}</td>
+                <td>{{item.quantity}}</td>
+                <td>
+                    <div class="subBtn">
+                        <button  assistiveTextAlignment="center" ibmButton="primary"
+                            type="submit" (click)="deletePost(item.id);">Delete Order</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table><br>
+
+    <pagination-controls id="my-pagination" (pageChange)="config.currentPage = $event"></pagination-controls>
+</div>
+<div class="container">
+    <h4>Lunch Orders</h4>
+    <table ibmTable model="model" style="justify-content: center;">
+        <thead>
+            <tr>
+                <th>Slno</th>
+                <th>Name</th>
+                <th>Meal Type</th>
+                <th>Item Selected</th>
+                <th>Suggestions</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of model.lunchdata | paginate: config1">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.mealType}}</td>
+                <td>{{item.selectedItem}}</td>
+                <td>{{item.Suggestions}}</td>
+                <td>
+                    <div class="subBtn">
+                        <button  assistiveTextAlignment="center" ibmButton="primary"
+                            type="submit" (click)="deletePost(item.id);">Delete Order</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table><br>
+
+    <pagination-controls id="my-pagination-Lunch" (pageChange)="config1.currentPage = $event"></pagination-controls>
+</div>
+<ibm-modal [open]="open" (overlaySelected)="open = false">
+    <ibm-modal-header (closeSelect)="open = false" [showCloseButton]="false">
+        <p class="bx--modal-header__heading bx--type-beta">Error Module</p>
+    </ibm-modal-header>
+    <div class="bx--modal-content">
+        <p>Make sure your connected to internet or the serve is still running</p>
+    </div>
+    <ibm-modal-footer>
+        <ng-container>
+            <button
+                ibmButton="primary"
+                (click)="open = false"
+                [attr.modal-primary-focus]="true">
+                Okay
+            </button>
+        </ng-container>
+    </ibm-modal-footer>
+</ibm-modal>
+<div class="container">
+    <h4>Dinner Orders</h4>
+    <table ibmTable model="model" style="justify-content: center;">
+        <thead>
+            <tr>
+                <th>Slno</th>
+                <th>Order-Name</th>
+                <th>Tomoto</th>
+                <th>Onion</th>
+                <th>Paneer</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of model.dinnerdata | paginate: config2">
+                <td>{{item.id}}</td>
+                <td>Pizza</td>
+                <td>{{item.addon.Tomato}}</td>
+                <td>{{item.addon.Onion}}</td>
+                <td>{{item.addon.Paneer}}</td>
+                <td>
+                    <div class="subBtn">
+                        <button  assistiveTextAlignment="center" ibmButton="primary"
+                            type="submit" (click)="deletePost(item.id);">Delete Order</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table><br>
+
+    <pagination-controls id="my-pagination-Lunch" (pageChange)="config2.currentPage = $event"></pagination-controls>
+</div>
+
+<input type="text" [(ngModel)] = "InputDec">
+<app-child [test]="InputDec" (s) = sendData($event)></app-child>

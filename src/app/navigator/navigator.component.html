@@ -1,0 +1,17 @@
+<ibm-content-switcher *ngIf="ele == 'breakFast' || ele == '' " (selected)="selected($event)" [theme]="'dark'" [size]="'lg'">
+	<button ibmContentOption [active] = 'true' name="breakFast">BreakFast</button>
+	<button ibmContentOption [active] = 'false' name="lunch">Lunch</button>
+	<button ibmContentOption [active] = 'false' name="dinner">Dinner</button>
+</ibm-content-switcher>
+
+<ibm-content-switcher *ngIf="ele == 'lunch'" (selected)="selected($event)" [theme]="'dark'" [size]="'lg'">
+	<button ibmContentOption [active] = 'false' name="breakFast">BreakFast</button>
+	<button ibmContentOption [active] = 'true' name="lunch">Lunch</button>
+	<button ibmContentOption [active] = 'false' name="dinner">Dinner</button>
+</ibm-content-switcher>
+
+<ibm-content-switcher *ngIf="ele == 'dinner'" (selected)="selected($event)" [theme]="'dark'" [size]="'lg'">
+	<button ibmContentOption [active] = 'false' name="breakFast">BreakFast</button>
+	<button ibmContentOption [active] = 'false' name="lunch">Lunch</button>
+	<button ibmContentOption [active] = 'true' name="dinner">Dinner</button>
+</ibm-content-switcher>

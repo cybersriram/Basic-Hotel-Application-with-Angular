@@ -1,0 +1,55 @@
+<app-navigator></app-navigator>
+<div class="container">
+    <div>
+        <h1 style="text-align: center;">Lunch</h1>
+    </div> <br>
+    <form class="formStyle">
+        <div class="select-Box">
+            <legend class="bx--label">{{radioGroup2LegendText}}</legend>
+            <ibm-radio-group [name]="radioGroup2Name" (ngModelChange)="changed()" [orientation]="'horizontal'" [labelPlacement]="'left'"
+                (change)="radioGroup2ValueChange($event)">
+                <ibm-radio [id]="radio3Id" [value]="radio3Value" [checked]="radio3Checked" [disabled]="radio3Disabled">
+                    {{radio3Label}}
+                </ibm-radio>
+                <ibm-radio [id]="radio4Id" [value]="radio4Value" [checked]="radio4Checked" [disabled]="radio4Disabled">
+                    {{radio4Label}}
+                </ibm-radio>
+            </ibm-radio-group>
+        </div>
+        <div style="display:inline-block;width: 35%;">
+            <ibm-label>
+                Enter your Name
+                <input ibmText name="text-input-2" (ngModelChange)="changed()" [(ngModel)]=LunchObj.name placeholder="Name" required />
+            </ibm-label>
+        </div><br><br>
+        <div class="select-Box">
+            <legend class="bx--label">Do you want tell us anything</legend>
+            <ibm-radio-group [name]="'reqradio'" [orientation]="'horizontal'" (ngModelChange)="changed()" [labelPlacement]="'left'"
+                (change)="showTextArea($event.value)">
+                <ibm-radio [id]="'radio-yes'" [value]="'true'" [checked]="radioChecked_yes" [disabled]="radio3Disabled">
+                    Yes
+                </ibm-radio>
+                <ibm-radio [id]="'radio-no'" [value]="'false'" [checked]="radioChecked_no" [disabled]="radio4Disabled">
+                    No
+                </ibm-radio>
+            </ibm-radio-group>
+        </div>
+        <div style="display:inline-block;width: 35%;">
+            <ibm-dropdown [label]="dropdown3Label" [helperText]="dropdown3HelperText" (ngModelChange)="changed()"
+                [placeholder]="dropdown3Placeholder" [theme]="'dark'" [size]="'md'" [disabled]="dropdown3Disabled"
+                [dropUp]="dropdown3DropUp" [type]="dropdown3Type" (selected)="dropdown3Selected($event)">
+                <ibm-dropdown-list [items]="dropdown3Items" required></ibm-dropdown-list>
+            </ibm-dropdown>
+        </div><br>
+        <br>
+        <ibm-label *ngIf="LunchObj.Orderreqbool == true">
+            We are Happy to hear your specifics Go on....
+            <textarea ibmTextArea [placeholder]="'Say how to want the order to be'" [disabled]="false" [theme]="'dark'"
+                [rows]="5" [cols]="10" aria-label="textarea" (ngModelChange)="changed()" [(ngModel)] = "LunchObj.Orderreq" name="textArea"></textarea>
+        </ibm-label><br>
+        <div class="subBtn">
+            <button assistiveTextAlignment="center" ibmButton="primary" type="submit" (click)="button2Clicked()">Confirm
+                your Order</button>
+        </div>
+    </form>
+</div>
