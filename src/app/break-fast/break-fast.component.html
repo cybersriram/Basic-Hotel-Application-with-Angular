@@ -1,48 +1,103 @@
 <app-navigator></app-navigator>
 <div class="container">
-	<div>
-		<h1 style="text-align: center;">BreakFast</h1>
-	</div> <br>
-	<form class="formStyle" [formGroup]="breakfastObj.formGrp">
-		<div class="select-Box">
-			<legend class="bx--label">{{radioGroup2LegendText}}</legend>
-			<ibm-radio-group [name]="radioGroup2Name" formControlName="RadioRequired" [orientation]="'horizontal'"
-				[labelPlacement]="'left'" (ngModelChange)="changed()" (change)="radioGroup2ValueChange($event)">
-				<ibm-radio [id]="radio3Id" [value]="radio3Value" [checked]="radio3Checked" [disabled]="radio3Disabled">
-					{{radio3Label}}
-				</ibm-radio>
-				<ibm-radio [id]="radio4Id" [value]="radio4Value" [checked]="radio4Checked" [disabled]="radio4Disabled">
-					{{radio4Label}}
-				</ibm-radio>
-			</ibm-radio-group>
-		</div>
-		<div style="display:inline-block;width: 35%;">
-			<ibm-label>
-				Enter your Name
-				<input ibmText name="text-input-2" formControlName="NameValidation" [(ngModel)]= breakfastObj.name
-					placeholder="Name" required (ngModelChange)="changed()" />
-			</ibm-label>
-		</div><br><br>
-		<div class="select-Box">
-			<ibm-number name="number-input-2"  [value]="numberInput2Value"
-				(change)="numberInput2ValueChange($event.value)" [label]="numberInput2Label" [theme]="'dark'"
-				[min]="numberInput2Min" [max]="numberInput2Max" [step]="numberInput2Step"
-				[invalid]="numberInput2Invalid" [invalidText]="'false'" [warn]="numberInput2Warn" [size]="'md'"
-				[disabled]="numberInput2Disabled" (ngModelChange)="changed()">
-			</ibm-number>
-		</div>
-		<div style="display:inline-block;width: 35%;">
-			<ibm-dropdown [label]="dropdown3Label" formControlName="DropdownValidation" [appendInline] = 'true'
-				[helperText]="dropdown3HelperText" [placeholder]="dropdown3Placeholder" [theme]="'dark'"
-				 [size]="'md'" (selected)="dropdown3Selected($event)">
-				<ibm-dropdown-list [items]="dropValue"></ibm-dropdown-list>
-			</ibm-dropdown>
-		</div><br>
-		<br>
-		<div class="subBtn">
-			<button [disabled]="!(breakfastObj.formGrp.valid)" assistiveTextAlignment="center" ibmButton="primary"
-				type="submit" (click)="button2Clicked()">Confirm your Order</button>
-		</div>
-
-	</form>
+  <div>
+    <h1 style="text-align: center">BreakFast</h1>
+  </div>
+  <br />
+  <form class="formStyle" [formGroup]="breakfastObj.formGrp">
+    <div class="select-Box">
+      <legend class="bx--label">{{ radioGroup2LegendText }}</legend>
+      <ibm-radio-group
+        [name]="radioGroup2Name"
+        formControlName="RadioRequired"
+        [orientation]="'horizontal'"
+        [labelPlacement]="'left'"
+        (ngModelChange)="changed()"
+        (change)="radioGroup2ValueChange($event)"
+      >
+        <ibm-radio
+          [id]="radio3Id"
+          [value]="radio3Value"
+          [checked]="radio3Checked"
+          [disabled]="radio3Disabled"
+        >
+          {{ radio3Label }}
+        </ibm-radio>
+        <ibm-radio
+          [id]="radio4Id"
+          [value]="radio4Value"
+          [checked]="radio4Checked"
+          [disabled]="radio4Disabled"
+        >
+          {{ radio4Label }}
+        </ibm-radio>
+      </ibm-radio-group>
+    </div>
+    <div style="display: inline-block; width: 35%">
+      <ibm-label>
+        Enter your Name
+        <input
+          ibmText
+          name="text-input-2"
+          formControlName="NameValidation"
+          [(ngModel)]="breakfastObj.name"
+          placeholder="Name"
+          required
+          (ngModelChange)="changed()"
+        />
+      </ibm-label>
+    </div>
+    <br /><br />
+    <div class="select-Box">
+      <ibm-number
+        name="number-input-2"
+        [value]="numberInput2Value"
+        (change)="numberInput2ValueChange($event.value)"
+        [label]="numberInput2Label"
+        [theme]="'dark'"
+        [min]="numberInput2Min"
+        [max]="numberInput2Max"
+        [step]="numberInput2Step"
+        [invalid]="numberInput2Invalid"
+        [invalidText]="'false'"
+        [warn]="numberInput2Warn"
+        [size]="'md'"
+        [disabled]="numberInput2Disabled"
+        (ngModelChange)="changed()"
+      >
+      </ibm-number>
+    </div>
+    <div style="display: inline-block; width: 35%">
+      <ibm-dropdown
+        [label]="dropdown3Label"
+        formControlName="DropdownValidation"
+        [appendInline]="true"
+        [helperText]="dropdown3HelperText"
+        [placeholder]="dropdown3Placeholder"
+        [theme]="'dark'"
+        [size]="'md'"
+        (selected)="dropdown3Selected($event)"
+      >
+        <ibm-dropdown-list [items]="dropValue"></ibm-dropdown-list>
+      </ibm-dropdown>
+    </div>
+    <br />
+    <br />
+	
+    <div class="subBtn">
+      <button
+        [disabled]="!breakfastObj.formGrp.valid"
+        assistiveTextAlignment="center"
+        ibmButton="primary"
+        type="submit"
+        (click)="button2Clicked()"
+      >
+        Confirm your Order
+      </button>
+    </div>
+  </form>
 </div>
+<ng-container *ngTemplateOutlet="test"></ng-container>
+<ng-template #test>
+<div myBackgroundColor>This is the bottom of the page</div>
+</ng-template>

@@ -12,7 +12,7 @@ export class DashboardComponent {
     this.service.deleterec(id);
     window.location.reload();
   }
-  InputDec: String = "";
+  InputDec: String = "Sriram";
   open: boolean = false;
   ngOnInit() {
     this.service.APIcall("BF").subscribe(
@@ -65,4 +65,8 @@ export class DashboardComponent {
     lunchdata: [],
     dinnerdata: [],
   };
+  btnpress(){
+    this.open = false
+    location.reload()
+  }
 }

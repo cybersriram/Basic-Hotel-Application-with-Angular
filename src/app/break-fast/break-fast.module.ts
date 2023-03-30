@@ -1,13 +1,15 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import { BreakFastComponent } from "./break-fast.component";
+import { BreakFastComponent, BreakFastDirective } from "./break-fast.component";
 import { ButtonModule, DropdownModule, InputModule, NumberModule, RadioModule } from "carbon-components-angular";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NavigatorModule } from "../navigator/navigator.module";
 import {HttpClientModule} from '@angular/common/http';
+import { CommonModule } from "@angular/common";
 @NgModule({
     declarations: [
-        BreakFastComponent
+        BreakFastComponent,
+        BreakFastDirective
       ],
     imports: [
         RouterModule.forChild([{path:"form/breakFast",component:BreakFastComponent}]),
@@ -17,6 +19,7 @@ import {HttpClientModule} from '@angular/common/http';
         DropdownModule,
         NumberModule,
         ButtonModule,
+        CommonModule,
         ReactiveFormsModule,
         FormsModule
     ],
